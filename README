@@ -1,1 +1,21 @@
 Project for CMPT 399
+
+
+
+Things to Look into:
+       Cards are not sorted
+       Games finish when one player hits 0$
+
+
+
+Classes to Look into:
+	Main:
+		delete commented out code
+		funciton:
+			inputNumberOfPlayers - rename?
+			main
+				show depricated, use setVisible
+
+	GameBoard :
+		  doesn't use generics
+		  make stuff line up
