@@ -10,6 +10,8 @@ public class GameBoard {
 	//the key of colorGroups is the name of the color group.
 	private Hashtable colorGroups = new Hashtable();
 	private ArrayList communityChestCards = new ArrayList();
+        private ArrayList<Card> drawnChanceCards = new ArrayList<Card>();
+        private ArrayList<Card> drawnCCCards = new ArrayList<Card>();
 	private GameMaster gameMaster;
 	
 	public GameBoard() {
@@ -24,6 +26,19 @@ public class GameBoard {
             chanceCards.add(card);
         }
     }
+    
+    public void addToDrawn(Card card){
+        if(card.getCardType() == Card.TYPE_CC){
+            drawnCCCards.add(card);
+            if (communityChestCards.isEmpty()){
+                communityChestCards.addAll(drawnCCCards);
+                drawnCCCards.removeAll(drawnCCCards);
+            }
+        }
+        else{
+            drawnChanceCards.add(card);
+        }
+    }
 	
 	public void addCell(Cell cell) {
 		cells.add(cell);
@@ -34,11 +49,13 @@ public class GameBoard {
 		colorGroups.put(cell.getColorGroup(), new Integer(propertyNumber + 1));
         cells.add(cell);
 	}
+    
 
     public Card drawCCCard() {
         Card card = (Card)communityChestCards.get(0);
         communityChestCards.remove(0);
-        addCard(card);
+        //addCard(card);
+        addToDrawn(card);
         return card;
     }
 
