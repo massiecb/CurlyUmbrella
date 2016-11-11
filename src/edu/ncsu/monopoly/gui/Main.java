@@ -80,7 +80,7 @@ public class Main {
 			GameMaster.instance().getPlayer(i).setName(name);
 		}
 		window.setupGameBoard(gameBoard);
-		window.show();
+		window.setVisible(true);
 		master.setGUI(window);
 		master.startGame();
 	}
