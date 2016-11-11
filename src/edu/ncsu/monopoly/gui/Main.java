@@ -72,6 +72,11 @@ public class Main {
 		for(int i = 0; i < numPlayers; i++) {
 			String name = 
 				JOptionPane.showInputDialog(window, "Please input name for Player " + (i+1));
+                        while (name.isEmpty()) {
+                            JOptionPane.showMessageDialog(window, "Please input a name");
+                             name = 
+				JOptionPane.showInputDialog(window, "Please input name for Player " + (i+1));
+                        }
 			GameMaster.instance().getPlayer(i).setName(name);
 		}
 		window.setupGameBoard(gameBoard);
