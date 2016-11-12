@@ -153,25 +153,25 @@ public class GameMaster {
         return gui;
     }
 
-	public int getInitAmountOfMoney() {
-            return initAmountOfMoney;
-	}
-	
-	public int getNumberOfPlayers() {
-            return players.size();
-	}
+    public int getInitAmountOfMoney() {
+        return initAmountOfMoney;
+    }
+
+    public int getNumberOfPlayers() {
+        return players.size();
+    }
 
     public int getNumberOfSellers() {
         return players.size() - 1;
     }
 
-	public Player getPlayer(int index) {
-            return (Player)players.get(index);
-	}
-	
-	public int getPlayerIndex(Player player) {
-            return players.indexOf(player);
-	}
+    public Player getPlayer(int index) {
+        return (Player)players.get(index);
+    }
+
+    public int getPlayerIndex(Player player) {
+        return players.indexOf(player);
+    }
 
     public ArrayList getSellerList() {
         ArrayList sellers = new ArrayList();
@@ -196,16 +196,16 @@ public class GameMaster {
     }
 
     public void movePlayer(Player player, int diceValue) {
-            Cell currentPosition = player.getPosition();
-            int positionIndex = gameBoard.queryCellIndex(currentPosition.getName());
-            int newIndex = (positionIndex+diceValue)%gameBoard.getCellNumber();
-            if(newIndex <= positionIndex || diceValue > gameBoard.getCellNumber()) {
-                    player.setMoney(player.getMoney() + 200);
-            }
-            player.setPosition(gameBoard.getCell(newIndex));
-            gui.movePlayer(getPlayerIndex(player), positionIndex, newIndex);
-            playerMoved(player);
-            updateGUI();
+        Cell currentPosition = player.getPosition();
+        int positionIndex = gameBoard.queryCellIndex(currentPosition.getName());
+        int newIndex = (positionIndex+diceValue)%gameBoard.getCellNumber();
+        if(newIndex <= positionIndex || diceValue > gameBoard.getCellNumber()) {
+            player.setMoney(player.getMoney() + 200);
+        }
+        player.setPosition(gameBoard.getCell(newIndex));
+        gui.movePlayer(getPlayerIndex(player), positionIndex, newIndex);
+        playerMoved(player);
+        updateGUI();
     }
 
     public void playerMoved(Player player) {
@@ -217,7 +217,7 @@ public class GameMaster {
                 if(cell.isAvailable()) {
                     int price = cell.getPrice();
                     if(price <= player.getMoney() && price > 0) {
-                            gui.enablePurchaseBtn(playerIndex);
+                        gui.enablePurchaseBtn(playerIndex);
                     }
                 }	
             gui.enableEndTurnBtn(playerIndex);
@@ -230,7 +230,9 @@ public class GameMaster {
             Player player = (Player)players.get(i);
             player.setPosition(gameBoard.getCell(0));
         }
-    if(gameBoard != null) gameBoard.removeCards();
+    if(gameBoard != null) {
+        gameBoard.removeCards();
+    }
     turn = 0;
     }
 

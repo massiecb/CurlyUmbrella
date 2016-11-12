@@ -19,7 +19,7 @@ public class MovePlayerCard extends Card {
         int diceValue = 0;
         if(currentCell > newCell) {
             diceValue = (GameMaster.instance().getGameBoard().getCellNumber() + 
-                    (newCell - currentCell));
+                (newCell - currentCell));
         }
         else if(currentCell <= newCell) {
             diceValue = newCell - currentCell;

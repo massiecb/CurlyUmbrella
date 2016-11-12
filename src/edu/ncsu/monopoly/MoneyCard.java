@@ -14,7 +14,7 @@ public class MoneyCard extends Card {
 
     public void applyAction() {
         Player currentPlayer = GameMaster.instance().getCurrentPlayer();
-		currentPlayer.setMoney(currentPlayer.getMoney() + amount);
+        currentPlayer.setMoney(currentPlayer.getMoney() + amount);
     }
 
     public int getCardType() {

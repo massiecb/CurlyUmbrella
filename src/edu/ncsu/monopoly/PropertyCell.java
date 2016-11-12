@@ -1,27 +1,27 @@
 package edu.ncsu.monopoly;
 
 public class PropertyCell extends Cell {
-	private String colorGroup;
-	private int housePrice;
-	private int numHouses;
-	private int rent;
-	private int sellPrice;
+    private String colorGroup;
+    private int housePrice;
+    private int numHouses;
+    private int rent;
+    private int sellPrice;
 
-	public String getColorGroup() {
-            return colorGroup;
-	}
+    public String getColorGroup() {
+        return colorGroup;
+    }
 
-	public int getHousePrice() {
-            return housePrice;
-	}
+    public int getHousePrice() {
+        return housePrice;
+    }
 
-	public int getNumHouses() {
-            return numHouses;
-	}
-    
+    public int getNumHouses() {
+        return numHouses;
+    }
+
     public int getPrice() {
-            return sellPrice;
-	}
+        return sellPrice;
+    }
 
     public int getRent() {
         int rentToCharge = rent;
