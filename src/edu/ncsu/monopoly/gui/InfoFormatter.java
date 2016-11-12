@@ -16,26 +16,26 @@ public class InfoFormatter {
     
     private static void addFormatters() {
         cellInfoFormatters.put(
-                PropertyCell.class, new PropertyCellInfoFormatter());
+            PropertyCell.class, new PropertyCellInfoFormatter());
         cellInfoFormatters.put(
-                GoCell.class, new GoCellInfoFormatter());
+            GoCell.class, new GoCellInfoFormatter());
         cellInfoFormatters.put(
-        		JailCell.class, new JailCellInfoFormatter());
+            JailCell.class, new JailCellInfoFormatter());
         cellInfoFormatters.put(
-        		GoToJailCell.class, new GotoJailCellInfoFormatter());
+            GoToJailCell.class, new GotoJailCellInfoFormatter());
         cellInfoFormatters.put(
-        		FreeParkingCell.class, new FreeParkingCellInfoFormatter());
+            FreeParkingCell.class, new FreeParkingCellInfoFormatter());
         cellInfoFormatters.put(
-                RailRoadCell.class, new RRCellInfoFormatter());
+            RailRoadCell.class, new RRCellInfoFormatter());
         cellInfoFormatters.put(
-                UtilityCell.class, new UtilCellInfoFormatter());
+            UtilityCell.class, new UtilCellInfoFormatter());
         cellInfoFormatters.put(
-                CardCell.class, new CCCellInfoFormatter());
+            CardCell.class, new CCCellInfoFormatter());
     }
 
     public static String cellInfo(Cell cell) {
         CellInfoFormatter formatter =
-                (CellInfoFormatter) cellInfoFormatters.get(cell.getClass());
+            (CellInfoFormatter) cellInfoFormatters.get(cell.getClass());
         return formatter.format(cell);
     }
 
