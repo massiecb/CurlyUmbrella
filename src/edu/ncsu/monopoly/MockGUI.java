@@ -13,10 +13,10 @@ public class MockGUI implements MonopolyGUI {
     public void enablePurchaseBtn(int playerIndex) {
     }
 	public int[] getDiceRoll() {
-		int roll[] = new int[2];
-		roll[0] = 2;
-		roll[1] = 3;
-		return roll;
+            int roll[] = new int[2];
+            roll[0] = 2;
+            roll[1] = 3;
+            return roll;
 	}
 
     public boolean isDrawCardButtonEnabled() {
@@ -28,7 +28,7 @@ public class MockGUI implements MonopolyGUI {
     }
 	
 	public boolean isGetOutOfJailButtonEnabled() {
-		return btnGetOutOfJailState;
+            return btnGetOutOfJailState;
 	}
 
     public boolean isTradeButtonEnabled(int i) {
@@ -79,15 +79,15 @@ public class MockGUI implements MonopolyGUI {
     public void showMessage(String string) {
     }
 
-	public int showUtilDiceRoll() {
-//		int[] diceValues = GameMaster.instance().rollDice();
-//		return diceValues[0] + diceValues[1];
-		return 10;
-	}
+    public int showUtilDiceRoll() {
+//      int[] diceValues = GameMaster.instance().rollDice();
+//      return diceValues[0] + diceValues[1];
+        return 10;
+    }
 
     public void startGame() {
     }
 
-	public void update() {
-	}
+    public void update() {
+    }
 }
