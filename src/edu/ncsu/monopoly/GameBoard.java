@@ -69,7 +69,6 @@ public class GameBoard {
         cells.add(cell);
     }
 
-
     public Card drawCCCard() {
         Card card = (Card) communityChestCards.get(0);
         communityChestCards.remove(0);
@@ -85,7 +84,6 @@ public class GameBoard {
         addToDrawn(card);
         return card;
     }
-
     public Cell getCell(int newIndex) {
         return (Cell)cells.get(newIndex);
     }
