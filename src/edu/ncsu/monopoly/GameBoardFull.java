@@ -257,5 +257,6 @@ public class GameBoardFull extends GameBoard {
         addCard(new MoneyCard("Lose $50", -50, Card.TYPE_CHANCE));
         addCard(new JailCard(Card.TYPE_CHANCE));
         addCard(new MovePlayerCard("Illinois Avenue", Card.TYPE_CHANCE));
+        shuffleCards();
     }
 }
