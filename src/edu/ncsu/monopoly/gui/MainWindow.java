@@ -25,11 +25,12 @@ import edu.ncsu.monopoly.Player;
 
 public class MainWindow extends JFrame implements MonopolyGUI{
    
-    JPanel eastPanel = new JPanel();
-    ArrayList guiCells = new ArrayList();
-
-    JPanel northPanel = new JPanel();
+  
     PlayerPanel[] playerPanels;
+    ArrayList guiCells = new ArrayList();
+    
+    JPanel eastPanel = new JPanel();  
+    JPanel northPanel = new JPanel();
     JPanel southPanel = new JPanel();
     JPanel westPanel = new JPanel();
 
@@ -40,10 +41,11 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         eastPanel.setBorder(new LineBorder(Color.BLACK));
 
         Container c = getContentPane();
-        //setSize(800, 600);
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension d = tk.getScreenSize();
+        
         setSize(d);
+        
         c.add(northPanel, BorderLayout.NORTH);
         c.add(southPanel, BorderLayout.SOUTH);
         c.add(eastPanel, BorderLayout.EAST);
@@ -179,18 +181,18 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         playerPanels[index].setTradeEnabled(b);
     }
 	
-	public void setupGameBoard(GameBoard board) {
-            Dimension dimension = GameBoardUtil.calculateDimension(board.getCellNumber());
-            northPanel.setLayout(new GridLayout(1, dimension.width + 2));
-            southPanel.setLayout(new GridLayout(1, dimension.width + 2));
-            westPanel.setLayout(new GridLayout(dimension.height, 1));
-            eastPanel.setLayout(new GridLayout(dimension.height, 1));
-            addCells(northPanel, GameBoardUtil.getNorthCells(board));
-            addCells(southPanel, GameBoardUtil.getSouthCells(board));
-            addCells(eastPanel, GameBoardUtil.getEastCells(board));
-            addCells(westPanel, GameBoardUtil.getWestCells(board));
-            buildPlayerPanels();
-	}
+    public void setupGameBoard(GameBoard board) {
+        Dimension dimension = GameBoardUtil.calculateDimension(board.getCellNumber());
+        northPanel.setLayout(new GridLayout(1, dimension.width + 2));
+        southPanel.setLayout(new GridLayout(1, dimension.width + 2));
+        westPanel.setLayout(new GridLayout(dimension.height, 1));
+        eastPanel.setLayout(new GridLayout(dimension.height, 1));
+        addCells(northPanel, GameBoardUtil.getNorthCells(board));
+        addCells(southPanel, GameBoardUtil.getSouthCells(board));
+        addCells(eastPanel, GameBoardUtil.getEastCells(board));
+        addCells(westPanel, GameBoardUtil.getWestCells(board));
+        buildPlayerPanels();
+    }
 
     public void showBuyHouseDialog(Player currentPlayer) {
         BuyHouseDialog dialog = new BuyHouseDialog(currentPlayer);
