@@ -22,7 +22,7 @@ public class GUICell extends JPanel {
         pnlPlayer.setOpaque(false);
         createPlayerLabels(pnlPlayer);
         add(pnlPlayer);
-        setPreferredSize(new Dimension(100,100));
+        setPreferredSize(new Dimension(175,100));
         addCellInfo();
         this.doLayout();
 	}
@@ -36,11 +36,11 @@ public class GUICell extends JPanel {
         add(pnlInfo);
     }
 	
-	public void addPlayer(int index) {
-            Player player = GameMaster.instance().getPlayer(index);
-            lblPlayers[index].setText(player.getName().substring(0, 1));
-            lblPlayers[index].setOpaque(true);
-	}
+    public void addPlayer(int index) {
+        Player player = GameMaster.instance().getPlayer(index);
+        lblPlayers[index].setText(player.getName().substring(0, 1));
+        lblPlayers[index].setOpaque(true);
+    }
 
     private void createPlayerLabels(JPanel pnlPlayer) {
         for (int i = 0; i < GameMaster.MAX_PLAYER; i++) {
@@ -50,19 +50,19 @@ public class GUICell extends JPanel {
         }
 }
 
-	public void displayInfo() {
-            lblInfo.setText(InfoFormatter.cellInfo(cell));
-            this.invalidate();
-            this.repaint();
-	}
+    public void displayInfo() {
+        lblInfo.setText(InfoFormatter.cellInfo(cell));
+        this.invalidate();
+        this.repaint();
+    }
 
-	public Cell getCell() {
-            return cell;
-	}
-	
-	public void removePlayer(int index) {
-            lblPlayers[index].setText("");
-            lblPlayers[index].setOpaque(false);
-            this.repaint();
-	}
+    public Cell getCell() {
+        return cell;
+    }
+
+    public void removePlayer(int index) {
+        lblPlayers[index].setText("");
+        lblPlayers[index].setOpaque(false);
+        this.repaint();
+    }
 }

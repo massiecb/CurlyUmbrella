@@ -1,4 +1,4 @@
-package edu.ncsu.monopoly.gui;
+/*package edu.ncsu.monopoly.gui;
 
 import edu.ncsu.monopoly.Cell;
 
@@ -9,4 +9,4 @@ public class ChanceCellInfoFormatter implements CellInfoFormatter {
     public String format(Cell cell) {
         return CHANCE_CELL_LABEL;
     }
-}
+}*/
