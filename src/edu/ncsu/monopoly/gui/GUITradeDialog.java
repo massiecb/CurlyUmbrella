@@ -88,6 +88,11 @@ public class GUITradeDialog extends JDialog implements TradeDialog {
                     deal.setPropertyName(cell.getName());
                     deal.setSellerIndex(GameMaster.instance().getPlayerIndex(player));
                 }
+                else {
+                      JOptionPane.showMessageDialog(GUITradeDialog.this,
+                        "Amount cannot equal or exceed all your money", "Error", JOptionPane.ERROR_MESSAGE);
+                    return; 
+                }
                 setVisible(false);
             }
         });

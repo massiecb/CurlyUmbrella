@@ -185,7 +185,7 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         Dimension dimension = GameBoardUtil.calculateDimension(board.getCellNumber());
         northPanel.setLayout(new GridLayout(1, dimension.width + 2));
         southPanel.setLayout(new GridLayout(1, dimension.width + 2));
-        westPanel.setLayout(new GridLayout(dimension.height, 1));
+        westPanel.setLayout(new GridLayout(dimension.height, 0));
         eastPanel.setLayout(new GridLayout(dimension.height, 1));
         addCells(northPanel, GameBoardUtil.getNorthCells(board));
         addCells(southPanel, GameBoardUtil.getSouthCells(board));

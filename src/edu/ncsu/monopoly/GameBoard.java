@@ -13,7 +13,7 @@ public class GameBoard {
     private ArrayList communityChestCards = new ArrayList();
     private ArrayList<Card> drawnChanceCards = new ArrayList<Card>();
     private ArrayList<Card> drawnCCCards = new ArrayList<Card>();
-    private GameMaster gameMaster;
+   // private GameMaster gameMaster;
 
     public GameBoard() {
         Cell go = new GoCell();
