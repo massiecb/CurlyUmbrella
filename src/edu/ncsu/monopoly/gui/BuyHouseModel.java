@@ -12,6 +12,7 @@ public class BuyHouseModel {
     private Player player;
     private BuyHouseView view;
     private DefaultComboBoxModel monopolyModel, numberModel;
+    public boolean b = false;
     
     public BuyHouseModel(Player player, BuyHouseView view){
         this.player = player;
@@ -49,6 +50,7 @@ public class BuyHouseModel {
         String monopoly = (String) view.getMonopolyComboBox().getSelectedItem();
         int numberOfHouses = view.getNumberComboBox().getSelectedIndex() + 1;
         player.purchaseHouse(monopoly, numberOfHouses);
+        b = true;
         view.dispose();
     }
     

@@ -30,8 +30,11 @@ public class BuyHouseView extends JDialog{
         c.add(new JLabel("Select monopoly"));
         c.add(cboMonopoly);
         c.add(new JLabel("Number of houses"));
+        c.add(cboNumber);
         c.add(okButton);
+        okButton.setText("OK");
         c.add(cancelButton);
+        cancelButton.setText("Cancel");
         c.doLayout();
         this.pack();
     }
