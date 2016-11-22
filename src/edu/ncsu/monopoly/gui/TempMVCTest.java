@@ -12,13 +12,16 @@ import static javafx.application.Platform.exit;
 public class TempMVCTest {
 
     public static void main(String[] args) {
+        // TODO code application logic here
         GameMaster master = GameMaster.instance();
-        master = GameMaster.instance();
-        master.setGameBoard(new SimpleGameBoard());
-        master.setGUI(new MockGUI());
-        master.setTestMode(true);
-        master.reset();
-        master.setNumberOfPlayers(1);
+        MainWindow w = new MainWindow();
+        GameBoard gb = new GameBoardFull();
+        master.setGameBoard(gb);
+        GameMaster.instance().setNumberOfPlayers(1);
+        GameMaster.instance().getPlayer(0).setName("test");
+        w.setupGameBoard(gb); 
+        master.setGUI(w);
+        master.startGame();        
         master.movePlayer(0, 1);
         Player p = master.getPlayer(0);
         p.purchase();

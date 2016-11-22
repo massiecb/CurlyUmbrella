@@ -1,13 +1,13 @@
 package edu.ncsu.monopoly;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Iterator;
 
 
 public class Player {
     //the key of colorGroups is the name of the color group.
-    private Hashtable colorGroups = new Hashtable();
+    private final HashMap colorGroups = new HashMap();
     private boolean inJail;
     private int money;
     private String name;
@@ -30,21 +30,15 @@ public class Player {
         if(property instanceof PropertyCell) {
             PropertyCell cell = (PropertyCell)property;
             properties.add(cell);
-            colorGroups.put(
-                cell.getColorGroup(), 
-                new Integer(getPropertyNumberForColor(cell.getColorGroup())+1));
+            colorGroups.put(cell.getColorGroup(), getPropertyNumberForColor(cell.getColorGroup())+1);
         }
         if(property instanceof RailRoadCell) {
             railroads.add(property);
-            colorGroups.put(
-                RailRoadCell.COLOR_GROUP, 
-                new Integer(getPropertyNumberForColor(RailRoadCell.COLOR_GROUP)+1));
+            colorGroups.put(RailRoadCell.COLOR_GROUP, getPropertyNumberForColor(RailRoadCell.COLOR_GROUP)+1);
         }
         if(property instanceof UtilityCell) {
             utilities.add(property);
-            colorGroups.put(
-                UtilityCell.COLOR_GROUP, 
-                new Integer(getPropertyNumberForColor(UtilityCell.COLOR_GROUP)+1));
+            colorGroups.put(UtilityCell.COLOR_GROUP, getPropertyNumberForColor(UtilityCell.COLOR_GROUP)+1);
         }
         setMoney(getMoney() - amount);
     }
@@ -73,46 +67,28 @@ public class Player {
             }
             else {
                 player.properties.add(cell);
-                colorGroups.put(
-                    cell.getColorGroup(), 
-                    new Integer(getPropertyNumberForColor(cell.getColorGroup())+1));
+                colorGroups.put(cell.getColorGroup(), getPropertyNumberForColor(cell.getColorGroup())+1);
             }
         }
     properties.clear();
     }
-    
-    public Cell[] getAllProperties() {
-        ArrayList list = new ArrayList();
-        list.addAll(properties);
-        list.addAll(utilities);
-        list.addAll(railroads);
-        return (Cell[])list.toArray(new Cell[list.size()]);
-    }
-
-    public int getMoney() {
-        return this.money;
-    }
 	
     public String[] getMonopolies() {
         ArrayList monopolies = new ArrayList();
-        Enumeration colors = colorGroups.keys();
-        while(colors.hasMoreElements()) {
-            String color = (String)colors.nextElement();
+        Iterator colors = colorGroups.keySet().iterator();
+        while(colors.hasNext()) {
+            String color = (String)colors.next();
     if(!(color.equals(RailRoadCell.COLOR_GROUP)) && !(color.equals(UtilityCell.COLOR_GROUP))) {
         Integer num = (Integer)colorGroups.get(color);
         GameBoard gameBoard = GameMaster.instance().getGameBoard();
-        if(num.intValue() == gameBoard.getPropertyNumberForColor(color)) {
+        if(num == gameBoard.getPropertyNumberForColor(color)) {
             monopolies.add(color);
             }
         }   
     }
     return (String[])monopolies.toArray(new String[monopolies.size()]);
 }
-
-    public String getName() {
-        return name;
-    }
-
+    
     public void getOutOfJail() {
         money -= JailCell.BAIL;
         if(isBankrupt()) {
@@ -122,43 +98,15 @@ public class Player {
         inJail = false;
         GameMaster.instance().updateGUI();
     }
-
-    public Cell getPosition() {
-        return this.position;
-    }
-	
-    public PropertyCell getProperty(int index) {
-        return (PropertyCell)properties.get(index);
-    }
-
-    public int getPropertyNumber() {
-        return properties.size();
-    }
-
+    
     private int getPropertyNumberForColor(String name) {
         Integer number = (Integer)colorGroups.get(name);
         if(number != null) {
-            return number.intValue();
+            return number;
         }
         return 0;
     }
-
-    public boolean isBankrupt() {
-        return money <= 0;
-    }
-
-    public boolean isInJail() {
-        return inJail;
-    }
-
-    public int numberOfRR() {
-        return getPropertyNumberForColor(RailRoadCell.COLOR_GROUP);
-    }
-
-    public int numberOfUtil() {
-        return getPropertyNumberForColor(UtilityCell.COLOR_GROUP);
-    }
-	
+    
     public void payRentTo(Player owner, int rentValue) {
         if(money < rentValue) {
             owner.money += money;
@@ -173,7 +121,7 @@ public class Player {
             exchangeProperty(owner);
         }
     }
-	
+    
     public void purchase() {
         if(getPosition().isAvailable()) {
             Cell c = getPosition();
@@ -192,7 +140,7 @@ public class Player {
             }
         }
     }
-	
+    
     public void purchaseHouse(String selectedMonopoly, int houses) {
         GameBoard gb = GameMaster.instance().getGameBoard();
         PropertyCell[] cells = gb.getPropertiesInMonopoly(selectedMonopoly);
@@ -233,6 +181,61 @@ public class Player {
         }
         setMoney(getMoney() + amount);
     }
+    
+    public void resetProperty() {
+    	properties = new ArrayList();
+    	railroads = new ArrayList();
+    	utilities = new ArrayList();
+    }
+    
+    @Override
+    public String toString() {
+        return name;
+    }
+    
+    public Cell[] getAllProperties() {
+        ArrayList list = new ArrayList();
+        list.addAll(properties);
+        list.addAll(utilities);
+        list.addAll(railroads);
+        return (Cell[])list.toArray(new Cell[list.size()]);
+    }
+    
+    public int getMoney() {
+        return this.money;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Cell getPosition() {
+        return this.position;
+    }
+	
+    public PropertyCell getProperty(int index) {
+        return (PropertyCell)properties.get(index);
+    }
+
+    public int getPropertyNumber() {
+        return properties.size();
+    }
+
+    public boolean isBankrupt() {
+        return money <= 0;
+    }
+
+    public boolean isInJail() {
+        return inJail;
+    }
+
+    public int numberOfRR() {
+        return getPropertyNumberForColor(RailRoadCell.COLOR_GROUP);
+    }
+
+    public int numberOfUtil() {
+        return getPropertyNumberForColor(UtilityCell.COLOR_GROUP);
+    }
 
     public void setInJail(boolean inJail) {
         this.inJail = inJail;
@@ -248,15 +251,5 @@ public class Player {
 
     public void setPosition(Cell newPosition) {
         this.position = newPosition;
-    }
-
-    public String toString() {
-        return name;
-    }
-    
-    public void resetProperty() {
-    	properties = new ArrayList();
-    	railroads = new ArrayList();
-    	utilities = new ArrayList();
     }
 }
