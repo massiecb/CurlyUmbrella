@@ -16,13 +16,14 @@ public class BuyHouseModel {
     public BuyHouseModel(Player player, BuyHouseView view){
         this.player = player;
         this.view = view;
-        populateMonopolyComboBox();
-        populateNumberComboBox();
+        monopolyModel = new DefaultComboBoxModel();
+        numberModel = new DefaultComboBoxModel();
         view.setMonopolyModel(monopolyModel);
         view.setNumberModel(numberModel);
         view.addOKButtonListener(new OKButtonAction());
         view.addCancelButtonListener(new CancelButtonAction());
-        
+        populateMonopolyComboBox();
+        populateNumberComboBox();
         
     }
     
