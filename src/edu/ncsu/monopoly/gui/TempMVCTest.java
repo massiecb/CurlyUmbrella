@@ -14,24 +14,25 @@ public class TempMVCTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /*
+        
         // TODO code application logic here
         GameMaster master = GameMaster.instance();
         MainWindow w = new MainWindow();
         GameBoard gb = new GameBoardFull();
         master.setGameBoard(gb);
         GameMaster.instance().setNumberOfPlayers(1);
+        GameMaster.instance().getPlayer(0).setName("test");
         w.setupGameBoard(gb); 
-       master.setGUI(w);
-        master.startGame();        */
-        GameMaster master = GameMaster.instance();
+        master.setGUI(w);
+        master.startGame();        
+        /*GameMaster master = GameMaster.instance();
  
-		master = GameMaster.instance();
-		master.setGameBoard(new SimpleGameBoard());
+        master = GameMaster.instance();
+        master.setGameBoard(new SimpleGameBoard());
         master.setGUI(new MockGUI());
         master.setTestMode(true);
         master.reset();
-        master.setNumberOfPlayers(1);
+        master.setNumberOfPlayers(1); */
         System.out.println(master.getPlayer(0).getPosition());
         master.movePlayer(0, 1);
         Player p = master.getPlayer(0);
