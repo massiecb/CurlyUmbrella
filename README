@@ -19,3 +19,6 @@ Classes to Look into:
 	GameBoard :
 		  doesn't use generics
 		  make stuff line up
+		  
+	BuyHouseModel : 
+		add feed back for insufficient money for purchasing a house
