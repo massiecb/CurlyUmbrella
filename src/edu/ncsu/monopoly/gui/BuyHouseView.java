@@ -40,6 +40,10 @@ public class BuyHouseView extends JDialog{
         cboMonopoly.setModel(m);
     }
     
+    public void setNumberModel(ComboBoxModel m){
+        cboNumber.setModel(m);
+    }
+    
     public void addOKButtonListener(ActionListener a){
         okButton.addActionListener(a);
     }

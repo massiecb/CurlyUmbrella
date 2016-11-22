@@ -4,6 +4,7 @@ import edu.ncsu.monopoly.Player;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
@@ -15,7 +16,13 @@ public class BuyHouseModel {
     public BuyHouseModel(Player player, BuyHouseView view){
         this.player = player;
         this.view = view;
-        this.view.setMonopolyModel(monopolyModel);
+        populateMonopolyComboBox();
+        populateNumberComboBox();
+        view.setMonopolyModel(monopolyModel);
+        view.setNumberModel(numberModel);
+        view.addOKButtonListener(new OKButtonAction());
+        view.addCancelButtonListener(new CancelButtonAction());
+        
         
     }
     
@@ -48,6 +55,13 @@ public class BuyHouseModel {
         String[] monopolies = player.getMonopolies();
         for (String s : monopolies)
             monopolyModel.addElement(s);
+    }
+    
+    private void populateNumberComboBox(){
+        List<Integer> numbers = new ArrayList<Integer>();
+        numbers.addAll(Arrays.asList(1, 2, 3, 4, 5));
+        for (Integer i : numbers)
+            numberModel.addElement(i);
     }
     
 }
