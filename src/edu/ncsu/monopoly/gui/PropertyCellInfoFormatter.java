@@ -5,10 +5,11 @@ import edu.ncsu.monopoly.Player;
 import edu.ncsu.monopoly.PropertyCell;
 
 public class PropertyCellInfoFormatter implements CellInfoFormatter {
+    @Override
     public String format(Cell cell) {
         
         PropertyCell c = (PropertyCell)cell;
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         Player owner = cell.getPlayer();
         String ownerName = "";
         
@@ -23,7 +24,7 @@ public class PropertyCellInfoFormatter implements CellInfoFormatter {
             .append("</font></b><br>")
             .append("$").append(c.getPrice())
             .append("<br>Owner: ").append(ownerName)
-            .append("<br>* ").append(c.getNumHouses())
+            .append("<br>Houses ").append(c.getNumHouses())
             .append("</html>");
         
         return buf.toString();

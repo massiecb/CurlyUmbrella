@@ -6,18 +6,21 @@ import java.util.Iterator;
 
 
 public class Player {
-    //the key of colorGroups is the name of the color group.
-    private final HashMap colorGroups = new HashMap();
+    private final HashMap colorGroups;
     private boolean inJail;
     private int money;
     private String name;
 
     private Cell position;
-    private ArrayList properties = new ArrayList();
-    private ArrayList railroads = new ArrayList();
-    private ArrayList utilities = new ArrayList();
+    private ArrayList properties;
+    private ArrayList railroads;
+    private ArrayList utilities;
 
     public Player() {
+        this.utilities = new ArrayList();
+        this.railroads = new ArrayList();
+        this.properties = new ArrayList();
+        this.colorGroups = new HashMap();
         GameBoard gb = GameMaster.instance().getGameBoard();
         inJail = false;
         if(gb != null) {
@@ -201,6 +204,18 @@ public class Player {
         return (Cell[])list.toArray(new Cell[list.size()]);
     }
     
+    public boolean isBankrupt() {
+        return money <= 0;
+    }
+    
+    public int numberOfRR() {
+        return getPropertyNumberForColor(RailRoadCell.COLOR_GROUP);
+    }
+
+    public int numberOfUtil() {
+        return getPropertyNumberForColor(UtilityCell.COLOR_GROUP);
+    }
+    
     public int getMoney() {
         return this.money;
     }
@@ -221,20 +236,8 @@ public class Player {
         return properties.size();
     }
 
-    public boolean isBankrupt() {
-        return money <= 0;
-    }
-
     public boolean isInJail() {
         return inJail;
-    }
-
-    public int numberOfRR() {
-        return getPropertyNumberForColor(RailRoadCell.COLOR_GROUP);
-    }
-
-    public int numberOfUtil() {
-        return getPropertyNumberForColor(UtilityCell.COLOR_GROUP);
     }
 
     public void setInJail(boolean inJail) {

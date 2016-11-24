@@ -35,6 +35,7 @@ public abstract class Cell {
         this.player = player;
     }
     
+    @Override
     public String toString() {
         return name;
     }
