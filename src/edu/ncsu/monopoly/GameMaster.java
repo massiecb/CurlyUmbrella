@@ -114,13 +114,19 @@ public class GameMaster {
         TradeDialog dialog = gui.openTradeDialog();
         TradeDeal deal = dialog.getTradeDeal();
         if(deal != null) {
+            /*
             RespondDialog rDialog = gui.openRespondDialog(deal);
             if(rDialog.getResponse()) {
                 completeTrade(deal);
                 updateGUI();
+                    */
+            boolean isAccept = gui.respondDialog(deal);
+            if (isAccept)
+                completeTrade(deal);
+            updateGUI();
             }
         }
-    }
+    
 
     public void completeTrade(TradeDeal deal) {
         Player seller = getPlayer(deal.getPlayerIndex());

@@ -24,6 +24,7 @@ public class RespondModel implements RespondDialog{
     public class AcceptButtonAction implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
+            view.dispose();
             response = true;
         }
     }
@@ -31,6 +32,7 @@ public class RespondModel implements RespondDialog{
     public class DeclineButtonAction implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
+            view.dispose();
             response = false;
         }
     }

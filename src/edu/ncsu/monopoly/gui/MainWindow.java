@@ -131,6 +131,13 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         dialog.setVisible(true);
         return dialog;
     }
+    
+    public boolean respondDialog (TradeDeal deal){
+        RespondView view = new RespondView();
+        RespondModel model = new RespondModel(view, deal);
+        view.setVisible(true);
+        return model.getResponse();
+    }
 
     public TradeDialog openTradeDialog() {
         GUITradeDialog dialog = new GUITradeDialog(this);
