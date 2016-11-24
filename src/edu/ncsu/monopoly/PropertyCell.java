@@ -19,6 +19,7 @@ public class PropertyCell extends Cell {
         return numHouses;
     }
 
+    @Override
     public int getPrice() {
         return sellPrice;
     }
@@ -37,6 +38,7 @@ public class PropertyCell extends Cell {
         return rentToCharge;
     }
 
+    @Override
     public void playAction() {
         Player currentPlayer = null;
         if(!isAvailable()) {
