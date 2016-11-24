@@ -90,4 +90,9 @@ public class MockGUI implements MonopolyGUI {
 
     public void update() {
     }
+
+    @Override
+    public boolean respondDialog(TradeDeal deal) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
