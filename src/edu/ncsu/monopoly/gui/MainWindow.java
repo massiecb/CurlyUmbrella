@@ -124,7 +124,7 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         fromCell.removePlayer(index);
         toCell.addPlayer(index);
     }
-
+    //TODO: Remove
     public RespondDialog openRespondDialog(TradeDeal deal) {
         GUIRespondDialog dialog = new GUIRespondDialog();
         dialog.setDeal(deal);
@@ -140,9 +140,13 @@ public class MainWindow extends JFrame implements MonopolyGUI{
     }
 
     public TradeDialog openTradeDialog() {
-        GUITradeDialog dialog = new GUITradeDialog(this);
-        dialog.setVisible(true);
-        return dialog;
+        //GUITradeDialog dialog = new GUITradeDialog(this);
+        //dialog.setVisible(true);
+        //return dialog;
+        TradeView tradeView = new TradeView(this);
+        TradeModel tradeModel = new TradeModel(tradeView);
+        tradeView.setVisible(true);
+        return tradeModel;
     }
 	
     private GUICell queryCell(int index) {
