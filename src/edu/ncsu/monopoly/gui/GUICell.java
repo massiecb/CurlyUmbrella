@@ -9,10 +9,12 @@ import edu.ncsu.monopoly.*;
 
 public class GUICell extends JPanel {
 
-    private Cell cell;
+    private final Cell cell;
     private JLabel lblInfo;
-    private JLabel[] lblPlayers = new JLabel[GameMaster.MAX_PLAYER];
-	
+    private final JLabel[] lblPlayers = new JLabel[GameMaster.MAX_PLAYER];
+    private final int WIDTH = 175;
+    private final int HEIGHT = 100;
+    
     public GUICell(Cell cell) {
         this.cell = cell;
         setLayout(new OverlayLayout(this));
@@ -22,7 +24,7 @@ public class GUICell extends JPanel {
         pnlPlayer.setOpaque(false);
         createPlayerLabels(pnlPlayer);
         add(pnlPlayer);
-        setPreferredSize(new Dimension(175,100));
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
         addCellInfo();
         this.doLayout();
 	}

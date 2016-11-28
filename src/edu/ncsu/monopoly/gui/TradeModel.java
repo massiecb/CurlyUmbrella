@@ -20,8 +20,8 @@ import javax.swing.DefaultComboBoxModel;
 public class TradeModel implements TradeDialog {
 
     private TradeDeal deal;
-    private TradeView view;
-    private DefaultComboBoxModel propertiesModel, sellersModel;
+    private final TradeView view;
+    private final DefaultComboBoxModel propertiesModel, sellersModel;
 
     public TradeModel(TradeView view) {
         propertiesModel = new DefaultComboBoxModel();
@@ -105,8 +105,8 @@ public class TradeModel implements TradeDialog {
         Cell[] cells = p.getAllProperties();
         if (cells.length > 0)
             view.enableOK();
-        for (int i = 0; i < cells.length; i++) {
-            propertiesModel.addElement(cells[i]);
+        for (Cell cell : cells) {
+            propertiesModel.addElement(cell);
         }
         
     }

@@ -13,11 +13,13 @@ import edu.ncsu.monopoly.TradeDeal;
 public class GUIRespondDialog extends JDialog implements RespondDialog {
     private boolean response;
     JTextArea txtMessage = new JTextArea();
+    private final int WIDTH = 300;
+    private final int HEIGHT = 200;
     
     public GUIRespondDialog() {
         JButton btnYes = new JButton("Yes");
         JButton btnNo = new JButton("No");
-        txtMessage.setPreferredSize(new Dimension(300, 200));
+        txtMessage.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         txtMessage.setEditable(false);
         txtMessage.setLineWrap(true);
         
@@ -29,24 +31,21 @@ public class GUIRespondDialog extends JDialog implements RespondDialog {
         pnlButtons.add(btnNo);
         contentPane.add(pnlButtons, BorderLayout.SOUTH);
         
-        btnYes.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                response = true;
-                setVisible(false);
-            }
+        btnYes.addActionListener((ActionEvent e) -> {
+            response = true;
+            setVisible(false);
         });
 
-        btnNo.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                response = false;
-                setVisible(false);
-            }
+        btnNo.addActionListener((ActionEvent e) -> {
+            response = false;
+            setVisible(false);
         });
     
         setModal(true);
         pack();
     }
 
+    @Override
     public boolean getResponse() {
         return response;
     }

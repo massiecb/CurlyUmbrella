@@ -1,8 +1,8 @@
 package edu.ncsu.monopoly;
 
 
-public class SimpleGameBoard extends GameBoard {
-    public SimpleGameBoard() {
+public class GameBoardSimple extends GameBoard {
+    public GameBoardSimple() {
         super();
         PropertyCell blue1 = new PropertyCell();
         PropertyCell blue2 = new PropertyCell();

@@ -12,9 +12,9 @@ import static org.junit.Assert.*;
  *
  * @author massie
  */
-public class SimpleGameBoardTest {
+public class GameBoardSimpleTest {
     
-    public SimpleGameBoardTest() {
+    public GameBoardSimpleTest() {
     }
 
     @Test

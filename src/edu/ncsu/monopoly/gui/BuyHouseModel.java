@@ -9,9 +9,9 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
 public class BuyHouseModel {
-    private Player player;
-    private BuyHouseView view;
-    private DefaultComboBoxModel monopolyModel, numberModel;
+    private final Player player;
+    private final BuyHouseView view;
+    private final DefaultComboBoxModel monopolyModel, numberModel;
     
     public BuyHouseModel(Player player, BuyHouseView view){
         this.player = player;
@@ -59,10 +59,11 @@ public class BuyHouseModel {
     }
     
     private void populateNumberComboBox(){
-        List<Integer> numbers = new ArrayList<Integer>();
+        List<Integer> numbers = new ArrayList<>();
         numbers.addAll(Arrays.asList(1, 2, 3, 4, 5));
-        for (Integer i : numbers)
+        numbers.stream().forEach((i) -> {
             numberModel.addElement(i);
+        });
     }
     
 }
