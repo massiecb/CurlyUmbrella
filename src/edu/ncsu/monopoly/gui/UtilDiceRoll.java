@@ -20,7 +20,7 @@ public class UtilDiceRoll extends JDialog {
         return dialog.diceValue;
     }
     JButton btnDice = new JButton("Roll the Dice!");
-    private JButton btnOK = new JButton("OK");
+    private final JButton btnOK = new JButton("OK");
     private int diceValue;
     private JLabel lblPrompt = new JLabel();
 
@@ -35,15 +35,11 @@ public class UtilDiceRoll extends JDialog {
         contentPane.setLayout(new BorderLayout());
         contentPane.add(lblPrompt, BorderLayout.CENTER);
         contentPane.add(pnlButtons, BorderLayout.SOUTH);
-        btnDice.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent arg0) {
-                rollDice();
-            }
+        btnDice.addActionListener((ActionEvent arg0) -> {
+            rollDice();
         });
-        btnOK.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent arg0) {
-                okClicked();
-            }
+        btnOK.addActionListener((ActionEvent arg0) -> {
+            okClicked();
         });
         this.pack();
     }

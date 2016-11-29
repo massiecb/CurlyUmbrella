@@ -18,7 +18,7 @@ public class BuyHouseDialog extends JDialog {
     private JComboBox cboMonopoly;
     private JComboBox cboNumber;
 
-    private Player player;
+    private final Player player;
 
     public BuyHouseDialog(Player player) {
             this.player = player;
@@ -36,10 +36,8 @@ public class BuyHouseDialog extends JDialog {
 
     private JButton buildCancelButton() {
         JButton btn = new JButton("Cancel");
-        btn.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                cancelClicked();
-            }
+        btn.addActionListener((ActionEvent e) -> {
+            cancelClicked();
         });
         return btn;
     }
@@ -51,20 +49,14 @@ public class BuyHouseDialog extends JDialog {
 
     private JComboBox buildNumberComboBox() {
         cboNumber = new JComboBox(new Integer[]{
-                    new Integer(1),
-                    new Integer(2),
-                    new Integer(3),
-                    new Integer(4),
-                    new Integer(5)});
+            1, 2, 3, 4, 5});
         return cboNumber;
     }
 
     private JButton buildOKButton() {
         JButton btn = new JButton("OK");
-        btn.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                okClicked();
-            }
+        btn.addActionListener((ActionEvent e) -> {
+            okClicked();
         });
     return btn;
     }

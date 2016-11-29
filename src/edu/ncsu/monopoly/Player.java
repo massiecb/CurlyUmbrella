@@ -148,11 +148,11 @@ public class Player {
         GameBoard gb = GameMaster.instance().getGameBoard();
         PropertyCell[] cells = gb.getPropertiesInMonopoly(selectedMonopoly);
         if((money >= (cells.length * (cells[0].getHousePrice() * houses)))) {
-            for(int i = 0; i < cells.length; i++) {
-                int newNumber = cells[i].getNumHouses() + houses;
+            for (PropertyCell cell : cells) {
+                int newNumber = cell.getNumHouses() + houses;
                 if (newNumber <= 5) {
-                    cells[i].setNumHouses(newNumber);
-                    this.setMoney(money - (cells[i].getHousePrice() * houses));
+                    cell.setNumHouses(newNumber);
+                    this.setMoney(money - (cell.getHousePrice() * houses));
                     GameMaster.instance().updateGUI();
                 }
             }

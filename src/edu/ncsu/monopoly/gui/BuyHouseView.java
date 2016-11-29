@@ -3,7 +3,6 @@ package edu.ncsu.monopoly.gui;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-import java.util.List;
 import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,10 +14,10 @@ import javax.swing.JLabel;
  * @author massie
  */
 public class BuyHouseView extends JDialog{
-    private JComboBox cboMonopoly;
-    private JComboBox cboNumber;
-    private JButton cancelButton;
-    private JButton okButton;
+    private final JComboBox cboMonopoly;
+    private final JComboBox cboNumber;
+    private final JButton cancelButton;
+    private final JButton okButton;
     
     public BuyHouseView(){
         okButton = new JButton();
