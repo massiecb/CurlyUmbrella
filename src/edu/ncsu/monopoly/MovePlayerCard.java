@@ -3,14 +3,15 @@ package edu.ncsu.monopoly;
 
 public class MovePlayerCard extends Card {
     
-    private String destination;
-    private int type;
+    private final String destination;
+    private final int type;
 
     public MovePlayerCard(String destination, int cardType) {
         this.destination = destination;
         this.type = cardType;
     }
 
+    @Override
     public void applyAction() {
         Player currentPlayer = GameMaster.instance().getCurrentPlayer();
         Cell currentPosition = currentPlayer.getPosition();
@@ -28,10 +29,12 @@ public class MovePlayerCard extends Card {
         GameMaster.instance().movePlayer(currentPlayer, diceValue);
     }
 
+    @Override
     public int getCardType() {
         return type;
     }
 
+    @Override
     public String getLabel() {
         return "Go to " + destination;
     }

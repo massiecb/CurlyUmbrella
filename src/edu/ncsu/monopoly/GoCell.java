@@ -6,9 +6,11 @@ public class GoCell extends Cell {
         setAvailable(false);
     }
 
+    @Override
     public void playAction() {
     }
 
+    @Override
     void setName(String name) {
     }
 }

@@ -52,6 +52,7 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         c.add(westPanel, BorderLayout.WEST);
 
         this.addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }
@@ -80,44 +81,53 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         }
     }
 
+    @Override
     public void enableEndTurnBtn(int playerIndex) {
         playerPanels[playerIndex].setEndTurnEnabled(true);
     }
 
+    @Override
     public void enablePlayerTurn(int playerIndex) {
         playerPanels[playerIndex].setRollDiceEnabled(true);
 
     }
 
+    @Override
     public void enablePurchaseBtn(int playerIndex) {
         playerPanels[playerIndex].setPurchasePropertyEnabled(true);
     }
 
+    @Override
     public int[] getDiceRoll() {
         TestDiceRollDialog dialog = new TestDiceRollDialog(this);
         dialog.setVisible(true);
         return dialog.getDiceRoll();
     }
 
+    @Override
     public boolean isDrawCardButtonEnabled() {
         int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();
         return playerPanels[currentPlayerIndex].isDrawCardButtonEnabled();
     }
 
+    @Override
     public boolean isEndTurnButtonEnabled() {
         int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();
         return playerPanels[currentPlayerIndex].isEndTurnButtonEnabled();
     }
 
+    @Override
     public boolean isGetOutOfJailButtonEnabled() {
         int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();
         return playerPanels[currentPlayerIndex].isGetOutOfJailButtonEnabled();
     }
 
+    @Override
     public boolean isTradeButtonEnabled(int i) {
         return playerPanels[i].isTradeButtonEnabled();
     }
 	
+    @Override
     public void movePlayer(int index, int from, int to) {
         GUICell fromCell = queryCell(from);
         GUICell toCell = queryCell(to);
@@ -125,6 +135,7 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         toCell.addPlayer(index);
     }
     //TODO: Remove
+    @Override
     public RespondDialog openRespondDialog(TradeDeal deal) {
         GUIRespondDialog dialog = new GUIRespondDialog();
         dialog.setDeal(deal);
@@ -132,6 +143,7 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         return dialog;
     }
     
+    @Override
     public boolean respondDialog (TradeDeal deal){
         RespondView view = new RespondView();
         RespondModel model = new RespondModel(view, deal);
@@ -139,6 +151,7 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         return model.getResponse();
     }
 
+    @Override
     public TradeDialog openTradeDialog() {
         //GUITradeDialog dialog = new GUITradeDialog(this);
         //dialog.setVisible(true);
@@ -158,36 +171,43 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         return null;
     }
 
+    @Override
     public void setBuyHouseEnabled(boolean b) {
         int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();
         playerPanels[currentPlayerIndex].setBuyHouseEnabled(b);
     }
 
+    @Override
     public void setDrawCardEnabled(boolean b) {
         int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();
         playerPanels[currentPlayerIndex].setDrawCardEnabled(b);
     }
 
+    @Override
     public void setEndTurnEnabled(boolean enabled) {
         int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();
         playerPanels[currentPlayerIndex].setEndTurnEnabled(enabled);
     }
 
+    @Override
     public void setGetOutOfJailEnabled(boolean b) {
         int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();
         playerPanels[currentPlayerIndex].setGetOutOfJailEnabled(b);
     }
 
+    @Override
     public void setPurchasePropertyEnabled(boolean enabled) {
         int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();
         playerPanels[currentPlayerIndex].setPurchasePropertyEnabled(enabled);
     }
 
+    @Override
     public void setRollDiceEnabled(boolean b) {
         int currentPlayerIndex = GameMaster.instance().getCurrentPlayerIndex();
         playerPanels[currentPlayerIndex].setRollDiceEnabled(b);
     }
 
+    @Override
     public void setTradeEnabled(int index, boolean b) {
         playerPanels[index].setTradeEnabled(b);
     }
@@ -205,23 +225,27 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         buildPlayerPanels();
     }
 
+    @Override
     public void showBuyHouseDialog(Player currentPlayer) {
         //BuyHouseDialog dialog = new BuyHouseDialog(currentPlayer);
         //dialog.setVisible(true);
         BuyHouseView buyHouseView = new BuyHouseView();
-        BuyHouseModel buyHouseModel = new BuyHouseModel(currentPlayer, buyHouseView);
+        //BuyHouseModel buyHouseModel = new BuyHouseModel(currentPlayer, buyHouseView);
         buyHouseView.setVisible(true);
         
     }
 
+    @Override
     public void showMessage(String msg) {
         JOptionPane.showMessageDialog(this, msg);
     }
 
+    @Override
     public int showUtilDiceRoll() {
         return UtilDiceRoll.showDialog();
     }
 
+    @Override
     public void startGame() {
         int numberOfPlayers = GameMaster.instance().getNumberOfPlayers();
         for(int i = 0; i < numberOfPlayers; i++) {
@@ -229,6 +253,7 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         }
     }
 
+    @Override
     public void update() {
         for(int i = 0; i < playerPanels.length; i++) {
             playerPanels[i].displayInfo();

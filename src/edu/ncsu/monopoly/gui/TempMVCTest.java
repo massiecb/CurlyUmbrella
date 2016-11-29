@@ -2,9 +2,7 @@ package edu.ncsu.monopoly.gui;
 import edu.ncsu.monopoly.GameMaster;
 import edu.ncsu.monopoly.Player;
 import edu.ncsu.monopoly.*;
-import java.util.ArrayList;
-import java.util.List;
-import static javafx.application.Platform.exit;
+
 /**
  *
  * @author massie

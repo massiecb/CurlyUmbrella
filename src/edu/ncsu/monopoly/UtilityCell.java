@@ -9,6 +9,7 @@ public class UtilityCell extends Cell {
         UtilityCell.PRICE = price;
     }
 
+    @Override
     public int getPrice() {
         return UtilityCell.PRICE;
     }
@@ -22,8 +23,9 @@ public class UtilityCell extends Cell {
     return 0;
     }
 
+    @Override
     public void playAction() {
-        Player currentPlayer = null;
+        Player currentPlayer;
         if(!isAvailable()) {
             currentPlayer = GameMaster.instance().getCurrentPlayer();
             if(player != currentPlayer) {
