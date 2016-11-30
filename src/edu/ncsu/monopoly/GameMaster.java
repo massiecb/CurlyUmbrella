@@ -120,6 +120,7 @@ public class GameMaster {
                 completeTrade(deal);
                 updateGUI();
                     */
+            System.out.println(gui.respondDialog(deal));
             boolean isAccept = gui.respondDialog(deal);
             if (isAccept)
                 completeTrade(deal);

@@ -98,8 +98,6 @@ public class TradeModel implements TradeDialog {
         }
     }
     
-
-    
     private void updateProperties(Player p){
         propertiesModel.removeAllElements();
         Cell[] cells = p.getAllProperties();

@@ -69,10 +69,10 @@ public class Main {
                 }
             GameMaster.instance().getPlayer(i).setName(name);
         }
-        //window.setupGameBoard(gameBoard);
+        window.setupGameBoard(gameBoard);
         window.setVisible(true);
         master.setGUI(window);
-        MonopolyController controller = new MonopolyController(window);
+        //MonopolyController controller = new MonopolyController(window);
         master.startGame();
     }
 }
