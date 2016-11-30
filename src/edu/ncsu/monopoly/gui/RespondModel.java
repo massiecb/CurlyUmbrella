@@ -12,34 +12,21 @@ import java.awt.event.ActionListener;
 public class RespondModel implements RespondDialog{
     
     private boolean response;
-    private RespondView view;
+    private TradeDeal deal;
     
-    RespondModel(RespondView view, TradeDeal deal){
-        this.view = view;
-        view.addAcceptButtonListener(new AcceptButtonAction());
-        view.addDeclineButtonListener(new DeclineButtonAction());
-        view.setMessageText(deal.makeMessage());
+    RespondModel(TradeDeal deal){
+        this.deal = deal;
     }
-    
-    public class AcceptButtonAction implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e){
-            view.dispose();
-            response = true;
-        }
-    }
-    
-    public class DeclineButtonAction implements ActionListener{
-        @Override
-        public void actionPerformed(ActionEvent e){
-            view.dispose();
-            response = false;
-        }
-    }
-    
     @Override
     public boolean getResponse() {
         return response;
     }
     
+    public String getDealMessage(){
+        return deal.makeMessage();
+    }
+    
+    public void setResponse(boolean b){
+        response = b;
+    }
 }
