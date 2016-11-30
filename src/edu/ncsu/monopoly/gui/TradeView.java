@@ -1,23 +1,36 @@
 package edu.ncsu.monopoly.gui;
 
+import edu.ncsu.monopoly.Cell;
+import edu.ncsu.monopoly.Player;
 import java.awt.Container;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.List;
 import javax.swing.*;
 
 /**
  *
  * @author massie
  */
-public class TradeView extends JDialog{
+public class TradeView extends JDialog {
+
     private JButton ok, cancel;
     private JComboBox sellers, properties;
     private JTextField amount;
-    
-    public TradeView (Frame parent){
+    private TradeView view;
+    private TradeModel model;
+    private DefaultComboBoxModel propertiesModel, sellersModel;
+
+    public TradeView(Frame parent, TradeModel model) {
         super(parent);
+        this.model = model;
+        propertiesModel = new DefaultComboBoxModel();
+        sellersModel = new DefaultComboBoxModel();
+
         setTitle("Trade Property");
         sellers = new JComboBox();
         properties = new JComboBox();
@@ -27,6 +40,13 @@ public class TradeView extends JDialog{
         ok.setEnabled(false);
         setModal(true);
         
+        ok.addActionListener(new OkButtonAction());
+        cancel.addActionListener(new CancelButtonAction());
+        sellers.addItemListener(new sellersUpdateProperties());
+        sellers.setModel(sellersModel);
+        properties.setModel(propertiesModel);
+        populateSellers();
+
         Container contentPane = getContentPane();
         contentPane.setLayout(new GridLayout(4, 2));
         contentPane.add(new JLabel("Sellers"));
@@ -37,48 +57,91 @@ public class TradeView extends JDialog{
         contentPane.add(amount);
         contentPane.add(ok);
         contentPane.add(cancel);
-        
+
+        this.view = this;
         this.pack();
     }
+
+    public class OkButtonAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int amount = 0;
+            try {
+                amount = view.getPrice();
+            } catch (NumberFormatException nfe) {
+                view.showErrorMessage("Amount should be an integer");
+                return;
+            }
+            if (amount < 0) {
+                view.showErrorMessage("Amount should be a positive integer");
+                return;
+            }
+            Cell cell = (Cell) view.properties.getSelectedItem();
+            if (cell == null) {
+                return;
+            }
+            Player player = (Player) view.sellers.getSelectedItem();
+            Player currentPlayer = model.getCurrentPlayer();
+            if (currentPlayer.getMoney() > amount) {
+                model.setDeal(amount, cell.getName(), model.getPlayerIndex(player));
+            } else {
+                view.showErrorMessage("Amount cannot equal or exceed all your money");
+                return;
+            }
+            view.dispose();
+        }
+    }
+
+    public class CancelButtonAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            view.dispose();
+        }
+    }
     
-    public void setSellersModel (ComboBoxModel m){
+    public class sellersUpdateProperties implements ItemListener{
+        @Override
+        public void itemStateChanged(ItemEvent e) {
+            Player player = (Player)e.getItem();
+            updateProperties(player);
+        }
+    }
+
+    private void addSellersUpdateListener(ItemListener i) {
+        sellers.addItemListener(i);
+    }
+
+    private void setSellersModel(ComboBoxModel m) {
         sellers.setModel(m);
     }
-    
-    public void setPropertiesModel (ComboBoxModel m){
+
+    private void setPropertiesModel(ComboBoxModel m) {
         properties.setModel(m);
     }
-    
-    public void addOKButtonListener (ActionListener a){
-        ok.addActionListener(a);
-    }
-    
-    public void addCancelButtonListener (ActionListener a){
-        cancel.addActionListener(a);
-    }
-    
-    public int getPrice(){
+
+    private int getPrice() {
         return Integer.parseInt(amount.getText());
     }
-    
-    public void showErrorMessage(String s){
+
+    private void showErrorMessage(String s) {
         JOptionPane.showMessageDialog(this, s, "Error", JOptionPane.ERROR_MESSAGE);
         this.pack();
     }
-    
-    public JComboBox getProperties(){
-        return properties;
+
+    private void populateSellers() {
+        for (Player player : model.getSellers()) {
+            sellersModel.addElement(player);
+        }
     }
-    
-    public JComboBox getSellers(){
-        return sellers;
-    }
-    
-    public void enableOK(){
-        ok.setEnabled(true);
-    }
-    
-    public void addSellersUpdateListener (ItemListener i){
-        sellers.addItemListener(i);
+    private void updateProperties(Player player){
+        propertiesModel.removeAllElements();
+        List<Cell> cells = model.getProperties(player);
+        if (cells.size() > 0)
+            ok.setEnabled(true);
+        for (Cell cell : cells) {
+            propertiesModel.addElement(cell);
+        }  
     }
 }

@@ -1,6 +1,8 @@
 package edu.ncsu.monopoly.gui;
 
 import edu.ncsu.monopoly.Player;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BuyHouseModel {
     private final Player player;
@@ -9,8 +11,12 @@ public class BuyHouseModel {
         this.player = player;
     }
     
-    public String[] getMonopolies(){
-        return player.getMonopolies();
+    public List<String> getMonopolies(){
+        List<String> monopoly = new ArrayList<>();
+        for (String s : player.getMonopolies())
+            monopoly.add(s);
+        //return player.getMonopolies();
+        return monopoly;
     }
     
     public void purchaseHouse(String monopoly, int numberOfHouses){

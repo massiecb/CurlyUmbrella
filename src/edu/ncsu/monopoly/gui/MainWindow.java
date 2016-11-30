@@ -169,8 +169,9 @@ public class MainWindow extends JFrame implements MonopolyGUI{
     
     @Override
     public boolean respondDialog (TradeDeal deal){
-        RespondView view = new RespondView();
-        RespondModel model = new RespondModel(view, deal);
+        RespondModel model = new RespondModel(deal);
+        RespondViewController view = new RespondViewController(model);
+        //RespondModel model = new RespondModel(view, deal);
         view.setVisible(true);
         return model.getResponse();
     }
@@ -180,8 +181,8 @@ public class MainWindow extends JFrame implements MonopolyGUI{
         //GUITradeDialog dialog = new GUITradeDialog(this);
         //dialog.setVisible(true);
         //return dialog;
-        TradeView tradeView = new TradeView(this);
-        TradeModel tradeModel = new TradeModel(tradeView);
+        TradeModel tradeModel = new TradeModel();
+        TradeView tradeView = new TradeView(this, tradeModel);
         tradeView.setVisible(true);
         return tradeModel;
     }
