@@ -17,6 +17,7 @@ import edu.ncsu.monopoly.*;
 import edu.ncsu.monopoly.Card;
 import edu.ncsu.monopoly.GameMaster;
 import edu.ncsu.monopoly.Player;
+import java.awt.Color;
 
 public class PlayerPanel extends JPanel {
 
@@ -49,6 +50,7 @@ public class PlayerPanel extends JPanel {
         lblName = new JLabel();
         lblMoney = new JLabel();
         txtProperty = new JTextArea(30, 70);
+        txtProperty.setDisabledTextColor(Color.black);
 
         txtProperty.setEnabled(false);
 
