@@ -32,8 +32,8 @@ public class TempMVCTest {
         master.movePlayer(0, 1);
         p.purchase();
 
-        BuyHouseView view = new BuyHouseView();
-        BuyHouseModel model = new BuyHouseModel(p, view);
+        BuyHouseModel model = new BuyHouseModel(p);
+        BuyHouseViewController view = new BuyHouseViewController(model);
         view.setVisible(true);
     }
     

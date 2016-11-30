@@ -10,23 +10,25 @@ import javax.swing.DefaultComboBoxModel;
 
 public class BuyHouseModel {
     private final Player player;
-    private final BuyHouseView view;
+   // private final BuyHouseView view;
     private final DefaultComboBoxModel monopolyModel, numberModel;
     
-    public BuyHouseModel(Player player, BuyHouseView view){
+    public BuyHouseModel(Player player) {//, BuyHouseView view){
         this.player = player;
-        this.view = view;
+        //this.view = view;
         monopolyModel = new DefaultComboBoxModel();
         numberModel = new DefaultComboBoxModel();
+        /*
         view.setMonopolyModel(monopolyModel);
         view.setNumberModel(numberModel);
         view.addOKButtonListener(new OKButtonAction());
         view.addCancelButtonListener(new CancelButtonAction());
+                
         populateMonopolyComboBox();
-        populateNumberComboBox();
+        populateNumberComboBox(); */
         
     }
-    
+    /*
     public class CancelButtonAction implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
@@ -52,6 +54,7 @@ public class BuyHouseModel {
         view.dispose();
     }
     
+    
     private void populateMonopolyComboBox(){
         String[] monopolies = player.getMonopolies();
         for (String s : monopolies)
@@ -65,5 +68,13 @@ public class BuyHouseModel {
             numberModel.addElement(i);
         });
     }
+    */
     
+    public String[] getMonopolies(){
+        return player.getMonopolies();
+    }
+    
+    public void purchaseHouse(String monopoly, int numberOfHouses){
+        player.purchaseHouse(monopoly, numberOfHouses);
+    }
 }
