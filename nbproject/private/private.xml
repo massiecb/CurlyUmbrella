@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/massie/NetBeansProjects/399Project/src/edu/ncsu/monopoly/gui/TradeModel.java</file>
+            <file>file:/Users/massie/NetBeansProjects/399Project/src/edu/ncsu/monopoly/gui/TradeView.java</file>
+            <file>file:/Users/massie/NetBeansProjects/399Project/src/edu/ncsu/monopoly/gui/RespondModel.java</file>
             <file>file:/Users/massie/NetBeansProjects/399Project/src/edu/ncsu/monopoly/gui/MainWindow.java</file>
-            <file>file:/Users/massie/NetBeansProjects/399Project/src/edu/ncsu/monopoly/gui/BuyHouseView.java</file>
-            <file>file:/Users/massie/NetBeansProjects/399Project/src/edu/ncsu/monopoly/gui/TempMVCTest.java</file>
-            <file>file:/Users/massie/NetBeansProjects/399Project/src/edu/ncsu/monopoly/gui/BuyHouseModel.java</file>
+            <file>file:/Users/massie/NetBeansProjects/399Project/src/edu/ncsu/monopoly/gui/RespondViewController.java</file>
+            <file>file:/Users/massie/NetBeansProjects/399Project/src/edu/ncsu/monopoly/GameMaster.java</file>
         </group>
     </open-files>
 </project-private>

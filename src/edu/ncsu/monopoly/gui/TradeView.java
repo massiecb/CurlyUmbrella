@@ -18,12 +18,12 @@ import javax.swing.*;
  */
 public class TradeView extends JDialog {
 
-    private JButton ok, cancel;
-    private JComboBox sellers, properties;
-    private JTextField amount;
-    private TradeView view;
-    private TradeModel model;
-    private DefaultComboBoxModel propertiesModel, sellersModel;
+    private final JButton ok, cancel;
+    private final JComboBox sellers, properties;
+    private final JTextField amount;
+    private final TradeView view;
+    private final TradeModel model;
+    private final DefaultComboBoxModel propertiesModel, sellersModel;
 
     public TradeView(Frame parent, TradeModel model) {
         super(parent);

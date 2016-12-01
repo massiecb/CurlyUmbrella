@@ -7,7 +7,7 @@ import edu.ncsu.monopoly.*;
  *
  * @author massie
  */
-public class TempMVCTest {
+public class TestPurchaseHouseMVC {
 
     public static void main(String[] args) {
         // TODO code application logic here

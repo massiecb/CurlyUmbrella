@@ -15,7 +15,6 @@ public class BuyHouseModel {
         List<String> monopoly = new ArrayList<>();
         for (String s : player.getMonopolies())
             monopoly.add(s);
-        //return player.getMonopolies();
         return monopoly;
     }
     

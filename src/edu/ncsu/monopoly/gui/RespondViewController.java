@@ -37,6 +37,7 @@ public class RespondViewController extends JDialog{
         panelButtons.add(accept);
         panelButtons.add(decline);
         contentPane.add(panelButtons, BorderLayout.SOUTH);
+        
         view = this;
         setModal(true);
         this.pack();

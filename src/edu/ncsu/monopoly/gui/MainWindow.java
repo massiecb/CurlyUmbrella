@@ -303,7 +303,10 @@ public class MainWindow extends JFrame implements MonopolyGUI{
 
     @Override
     public int showUtilDiceRoll() {
-        return UtilDiceRoll.showDialog();
+        UtilDiceRollModel model = new UtilDiceRollModel();
+        UtilDiceRollViewController view = new UtilDiceRollViewController(model);
+        view.setVisible(true);
+        return model.getDiceValue();
     }
 
     @Override

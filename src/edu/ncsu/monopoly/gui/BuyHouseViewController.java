@@ -59,30 +59,6 @@ public class BuyHouseViewController extends JDialog{
         this.pack();
     }
     
-    public void setMonopolyModel(ComboBoxModel m){
-        cboMonopoly.setModel(m);
-    }
-    
-    public void setNumberModel(ComboBoxModel m){
-        cboNumber.setModel(m);
-    }
-    
-    public void addOKButtonListener(ActionListener a){
-        okButton.addActionListener(a);
-    }
-    
-    public void addCancelButtonListener(ActionListener a){
-        cancelButton.addActionListener(a);
-    }
-    
-    public JComboBox getMonopolyComboBox(){
-        return cboMonopoly;
-    }
-    
-    public JComboBox getNumberComboBox(){
-        return cboNumber;
-    }
-    
     public class CancelButtonAction implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
@@ -102,8 +78,8 @@ public class BuyHouseViewController extends JDialog{
     }
     
     private void okClicked(){
-        String monopoly = (String) this.getMonopolyComboBox().getSelectedItem();
-        int numberOfHouses = this.getNumberComboBox().getSelectedIndex() + 1;
+        String monopoly = (String) cboMonopoly.getSelectedItem();
+        int numberOfHouses = cboMonopoly.getSelectedIndex() + 1;
         model.purchaseHouse(monopoly, numberOfHouses);
         this.dispose();
     }
@@ -119,5 +95,13 @@ public class BuyHouseViewController extends JDialog{
         numbers.stream().forEach((i) -> {
             numberModel.addElement(i);
         });
+    }
+    
+    private void setMonopolyModel(ComboBoxModel m){
+        cboMonopoly.setModel(m);
+    }
+    
+    private void setNumberModel(ComboBoxModel m){
+        cboNumber.setModel(m);
     }
 }
