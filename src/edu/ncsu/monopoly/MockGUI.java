@@ -85,8 +85,8 @@ public class MockGUI implements MonopolyGUI {
     }
 
     @Override
-    public void setTradeEnabled(int index, boolean b) {
-        this.btnTradeState[index] = b;
+    public void setTradeEnabled(boolean b) {
+        this.btnTradeState[GameMaster.instance().getCurrentPlayerIndex()] = b;
     }
 
     @Override
@@ -98,10 +98,10 @@ public class MockGUI implements MonopolyGUI {
     }
 
     @Override
-    public int showUtilDiceRoll() {
+    public void showUtilDiceRoll() {
 //      int[] diceValues = GameMaster.instance().rollDice();
 //      return diceValues[0] + diceValues[1];
-        return 10;
+        //return 10;
     }
 
     @Override

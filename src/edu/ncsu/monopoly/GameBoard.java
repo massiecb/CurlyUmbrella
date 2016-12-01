@@ -76,7 +76,6 @@ public class GameBoard {
     public Card drawCCCard() {
         Card card = (Card) communityChestCards.get(0);
         communityChestCards.remove(0);
-        //addCard(card);
         addToDrawn(card);
         return card;
     }
@@ -84,7 +83,6 @@ public class GameBoard {
     public Card drawChanceCard() {
         Card card = (Card) chanceCards.get(0);
         chanceCards.remove(0);
-        //addCard(card);
         addToDrawn(card);
         return card;
     }

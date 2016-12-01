@@ -71,8 +71,6 @@ public class Main {
         }
         window.setupGameBoard(gameBoard);
         window.setVisible(true);
-        master.setGUI(window);
-        //MonopolyController controller = new MonopolyController(window);
-        master.startGame();
+        window.startGame();
     }
 }

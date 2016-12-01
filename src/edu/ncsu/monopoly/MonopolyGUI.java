@@ -19,10 +19,10 @@ public interface MonopolyGUI {
     public void setGetOutOfJailEnabled(boolean b);
     public void setPurchasePropertyEnabled(boolean enabled);
     public void setRollDiceEnabled(boolean b);
-    public void setTradeEnabled(int index, boolean b);
+    public void setTradeEnabled(boolean b);
     public void showBuyHouseDialog(Player currentPlayer);
     public void showMessage(String string);
-    public int showUtilDiceRoll();
+    public void showUtilDiceRoll();
     public void startGame();
     public void update();
     public boolean respondDialog(TradeDeal deal);

@@ -17,9 +17,8 @@ public class TestPurchaseHouseMVC {
         master.setGameBoard(gb);
         GameMaster.instance().setNumberOfPlayers(1);
         GameMaster.instance().getPlayer(0).setName("test");
-        w.setupGameBoard(gb); 
-        master.setGUI(w);
-        master.startGame();        
+        w.setupGameBoard(gb);
+        w.startGame();        
         master.movePlayer(0, 1);
         Player p = master.getPlayer(0);
         p.purchase();

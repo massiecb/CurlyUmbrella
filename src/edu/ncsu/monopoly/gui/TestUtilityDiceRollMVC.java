@@ -17,9 +17,9 @@ public class TestUtilityDiceRollMVC {
         master.setGameBoard(gb);
         GameMaster.instance().setNumberOfPlayers(1);
         GameMaster.instance().getPlayer(0).setName("test");
-        w.setupGameBoard(gb); 
-        master.setGUI(w);
-        System.out.println(w.showUtilDiceRoll());
+        w.setupGameBoard(gb);
+        w.showUtilDiceRoll();
+        System.out.println(GameMaster.instance().getUtilDiceRoll());
     }
     
 }
