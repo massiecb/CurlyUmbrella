@@ -4,6 +4,10 @@ import javax.swing.JOptionPane;
 
 import edu.ncsu.monopoly.*;
 
+/* Refactorings
+ * Removed raw types, implemented with generics
+*/
+
 public class Main {
 
     private static int inputNumberOfPlayers(MainWindow window) {

@@ -3,9 +3,9 @@ import edu.ncsu.monopoly.GameMaster;
 import edu.ncsu.monopoly.Player;
 import edu.ncsu.monopoly.*;
 
-/**
- *
- * @author massie
+/* Refactorings
+ * Used to test the house purchasing GUI 
+ * 
  */
 public class TestPurchaseHouseMVC {
 

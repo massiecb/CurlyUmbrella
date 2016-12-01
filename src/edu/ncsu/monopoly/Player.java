@@ -3,6 +3,13 @@ package edu.ncsu.monopoly;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+
+/* Refactorings
+ * No longer referneces the GUI
+ * Generics implemented. Releases property when player is knocked out of the 
+ * Game.
+*/
 
 public class Player {
 
@@ -12,14 +19,14 @@ public class Player {
     private String name;
 
     private Cell position;
-    private ArrayList properties;
-    private ArrayList railroads;
-    private ArrayList utilities;
+    private List properties;
+    private List railroads;
+    private List utilities;
 
     public Player() {
-        this.utilities = new ArrayList();
-        this.railroads = new ArrayList();
-        this.properties = new ArrayList();
+        this.utilities = new ArrayList<>();
+        this.railroads = new ArrayList<>();
+        this.properties = new ArrayList<>();
         this.colorGroups = new HashMap();
         GameBoard gb = GameMaster.instance().getGameBoard();
         inJail = false;

@@ -9,6 +9,15 @@ import javax.swing.*;
 import edu.ncsu.monopoly.RespondDialog;
 import edu.ncsu.monopoly.TradeDeal;
 
+/* Refactorings
+ * No Longer used in packaage. This implementation mixed Concerns
+ * Has been seperated into RespondModel and RespondViewController which 
+ * implememnts this class in MVC to seperate the concerns. The new
+ * implementation also removes raw types and uses generics instead.
+ * The new implementation also doesn't return the Dialog box itself, but rather
+ * a boolean to indicate the users input.
+ * All depricated functions have been removed in the new implementations.
+*/
 
 public class GUIRespondDialog extends JDialog implements RespondDialog {
     private boolean response;

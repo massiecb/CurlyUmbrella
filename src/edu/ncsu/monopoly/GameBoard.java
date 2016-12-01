@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+/* Refactorings
+ * Implementd Generics
+ * Wrote GameBoardTest to test the randomization of the cards
+ * The cards are now shuffled when they are first initialized and 
+ * when the decks are rebuilt.
+*/
+
 public class GameBoard {
 
     private final ArrayList cells;

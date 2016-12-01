@@ -16,6 +16,16 @@ import edu.ncsu.monopoly.*;
 import edu.ncsu.monopoly.TradeDeal;
 import edu.ncsu.monopoly.TradeDialog;
 
+/* Refactorings
+ * No Longer used in packaage. This implementation mixed Concerns
+ * Has been seperated into TradeModel and TradeView which 
+ * implememnts this class in MVC to seperate the concerns. The new
+ * implementation also removes raw types and uses generics instead.
+ * The new implementation also doesn't return the Dialog box itself, but rather
+ * a only the TradeDeal type the other classes are concerned with.
+ * All depricated functions have been removed.
+*/
+
 public class GUITradeDialog extends JDialog implements TradeDialog {
     private JButton btnOK, btnCancel;
     private JComboBox cboSellers, cboProperties;

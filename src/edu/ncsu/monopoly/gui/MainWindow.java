@@ -25,6 +25,19 @@ import edu.ncsu.monopoly.Player;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/* Refactorings
+ * Combines the controller with the view for the Monopoly Game
+ * Switched raw types to generics
+ * Inlined button listeners from GameMaster which is now acting as the model
+ * and the button listeners were outside of the scope of master.
+ * Removed iterators, replaced with for loops.
+ * Updates the GameMaster when changes are made, GameMaster does not update the
+ * view or controller anymore.
+ * Rearranged functions, put public funcitons first, then private functions, then
+ * finally the private button listener classes.
+ * All deprecated Code has been removed.
+*/
+
 public class MainWindow extends JFrame implements MonopolyGUI {
 
     private List<PlayerPanel> playerPanels;
@@ -61,28 +74,19 @@ public class MainWindow extends JFrame implements MonopolyGUI {
             }
         });
     }
+    
 
-    private void addCells(JPanel panel, List cells) {
-        for (int x = 0; x < cells.size(); x++) {
-            GUICell cell = new GUICell((Cell) cells.get(x));
-            panel.add(cell);
-            guiCells.add(cell);
-        }
-    }
-
-    private void buildPlayerPanels() {
-        GameMaster master = GameMaster.instance();
-        JPanel infoPanel = new JPanel();
-        int players = master.getNumberOfPlayers();
-        infoPanel.setLayout(new GridLayout(2, (players + 1) / 2));
-        getContentPane().add(infoPanel, BorderLayout.CENTER);
-        playerPanels = new ArrayList<>();
-        for (int i = 0; i < master.getNumberOfPlayers(); i++) {
-            playerPanels.add(i, new PlayerPanel(master.getPlayer(i)));
-            infoPanel.add(playerPanels.get(i));
-            playerPanels.get(i).displayInfo();
-            addActionListeners(playerPanels.get(i));
-        }
+    public void setupGameBoard(GameBoard board) {
+        Dimension dimension = GameBoardUtil.calculateDimension(board.getCellNumber());
+        northPanel.setLayout(new GridLayout(1, dimension.width + 2));
+        southPanel.setLayout(new GridLayout(1, dimension.width + 2));
+        westPanel.setLayout(new GridLayout(dimension.height, 0));
+        eastPanel.setLayout(new GridLayout(dimension.height, 1));
+        addCells(northPanel, GameBoardUtil.getNorthCells(board));
+        addCells(southPanel, GameBoardUtil.getSouthCells(board));
+        addCells(eastPanel, GameBoardUtil.getEastCells(board));
+        addCells(westPanel, GameBoardUtil.getWestCells(board));
+        buildPlayerPanels();
     }
 
     @Override
@@ -206,19 +210,6 @@ public class MainWindow extends JFrame implements MonopolyGUI {
         playerPanels.get(currentPlayerIndex).setTradeEnabled(b);
     }
 
-    public void setupGameBoard(GameBoard board) {
-        Dimension dimension = GameBoardUtil.calculateDimension(board.getCellNumber());
-        northPanel.setLayout(new GridLayout(1, dimension.width + 2));
-        southPanel.setLayout(new GridLayout(1, dimension.width + 2));
-        westPanel.setLayout(new GridLayout(dimension.height, 0));
-        eastPanel.setLayout(new GridLayout(dimension.height, 1));
-        addCells(northPanel, GameBoardUtil.getNorthCells(board));
-        addCells(southPanel, GameBoardUtil.getSouthCells(board));
-        addCells(eastPanel, GameBoardUtil.getEastCells(board));
-        addCells(westPanel, GameBoardUtil.getWestCells(board));
-        buildPlayerPanels();
-    }
-
     @Override
     public void showBuyHouseDialog(Player currentPlayer) {
         BuyHouseModel buyHouseModel = new BuyHouseModel(currentPlayer);
@@ -258,6 +249,29 @@ public class MainWindow extends JFrame implements MonopolyGUI {
         for (int j = 0; j < guiCells.size(); j++) {
             GUICell cell = (GUICell) guiCells.get(j);
             cell.displayInfo();
+        }
+    }
+    
+    private void addCells(JPanel panel, List cells) {
+        for (int x = 0; x < cells.size(); x++) {
+            GUICell cell = new GUICell((Cell) cells.get(x));
+            panel.add(cell);
+            guiCells.add(cell);
+        }
+    }
+
+    private void buildPlayerPanels() {
+        GameMaster master = GameMaster.instance();
+        JPanel infoPanel = new JPanel();
+        int players = master.getNumberOfPlayers();
+        infoPanel.setLayout(new GridLayout(2, (players + 1) / 2));
+        getContentPane().add(infoPanel, BorderLayout.CENTER);
+        playerPanels = new ArrayList<>();
+        for (int i = 0; i < master.getNumberOfPlayers(); i++) {
+            playerPanels.add(i, new PlayerPanel(master.getPlayer(i)));
+            infoPanel.add(playerPanels.get(i));
+            playerPanels.get(i).displayInfo();
+            addActionListeners(playerPanels.get(i));
         }
     }
 

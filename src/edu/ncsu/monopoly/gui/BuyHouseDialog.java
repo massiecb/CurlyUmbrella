@@ -1,4 +1,3 @@
-
 package edu.ncsu.monopoly.gui;
 
 import java.awt.Container;
@@ -12,6 +11,14 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 
 import edu.ncsu.monopoly.Player;
+
+/* Refacotrings
+ * No longer used in project. This implementation had a mix of concerns. 
+ * This class has been split into two classes, BuyHouseModel and 
+ * BuyHouseViewController which implements MVC to seperate the concerns. The new
+ * implementation also removes raw types and uses generics instead.
+ * All depricated code has been removed in the new implementations.
+*/
 
 
 public class BuyHouseDialog extends JDialog {

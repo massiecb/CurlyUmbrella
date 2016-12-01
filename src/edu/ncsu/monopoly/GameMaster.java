@@ -1,8 +1,18 @@
 package edu.ncsu.monopoly;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+
+/* Refactorings
+ * Acts as the Monopoly games model. keeps track of players, the turn, dice rolls
+ * and all the data behind the application. Is called to update based upon the 
+ * controller found in MainWindow. Has no access to MainWindow, which also contains
+ * the view. This seperated the concerns for these two functions as previous
+ * GameMaster, and any class that it was in charge of could call funcitons in 
+ * MainWindow.
+ * All raw types are removed. Generics are used instead. All depricated Code has
+ * been removed.
+*/
 
 public class GameMaster {
 

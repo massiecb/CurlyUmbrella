@@ -4,9 +4,9 @@ import edu.ncsu.monopoly.GameBoard;
 import edu.ncsu.monopoly.GameBoardFull;
 import edu.ncsu.monopoly.GameMaster;
 
-/**
- *
- * @author massie
+/* Refactorings
+ * Used to test the utlity dice roll
+ * 
  */
 public class TestUtilityDiceRollMVC {
 
