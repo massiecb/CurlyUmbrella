@@ -1,16 +1,17 @@
 package edu.ncsu.monopoly;
 
+import java.util.List;
+
 public interface MonopolyGUI {
     public void enableEndTurnBtn(int playerIndex);
     public void enablePlayerTurn(int playerIndex);
     public void enablePurchaseBtn(int playerIndex);
-    public int[] getDiceRoll();
+    public List<Integer> getDiceRoll();
     public boolean isDrawCardButtonEnabled();
     public boolean isEndTurnButtonEnabled();
     public boolean isGetOutOfJailButtonEnabled();
     public boolean isTradeButtonEnabled(int i);
     public void movePlayer(int index, int from, int to);
-    public RespondDialog openRespondDialog(TradeDeal deal);
     public TradeDialog openTradeDialog();
     public void setBuyHouseEnabled(boolean b);
     public void setDrawCardEnabled(boolean b);

@@ -5,6 +5,8 @@ import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -16,7 +18,7 @@ import javax.swing.JTextField;
 public class TestDiceRollDialog extends JDialog {
     private JButton btnOK, btnCancel;
     private JTextField txtDiceRoll;
-    private int[] diceRoll;
+    private List<Integer> diceRoll;
     
     public TestDiceRollDialog(Frame parent) {
         super(parent);
@@ -37,9 +39,9 @@ public class TestDiceRollDialog extends JDialog {
         
         btnCancel.addActionListener((ActionEvent e) -> {
             TestDiceRollDialog.this.hide();
-            diceRoll = new int[2];
-            diceRoll[0] = 0;
-            diceRoll[1] = 0;
+            diceRoll = new ArrayList<>();
+            diceRoll.add(0, 0);
+            diceRoll.add(0, 0);
         });
         
         btnOK.addActionListener((ActionEvent e) -> {
@@ -52,14 +54,14 @@ public class TestDiceRollDialog extends JDialog {
                 return;
             }
             if(amount > 0) {
-                diceRoll = new int[2];
+                diceRoll = new ArrayList<>();
                 if((amount % 2) == 0) {
-                    diceRoll[0] = amount / 2;
-                    diceRoll[1] = amount / 2;
+                    diceRoll.add(0, amount/2);
+                    diceRoll.add(0,0);
                 }
                 else {
-                    diceRoll[0] = amount / 2;
-                    diceRoll[1] = (amount / 2) + 1;
+                    diceRoll.add (0, amount/2);
+                    diceRoll.add  (0, (amount / 2) + 1);
                 }
             }
             setVisible(false);
@@ -68,7 +70,7 @@ public class TestDiceRollDialog extends JDialog {
         this.pack();
     }
 
-    public int[] getDiceRoll() {
+    public List<Integer> getDiceRoll() {
         return diceRoll;
     }
 }

@@ -95,37 +95,34 @@ public class PlayerPanel extends JPanel {
         btnTrade.setEnabled(false);
 
         setBorder(new BevelBorder(BevelBorder.RAISED));
-
-        btnRollDice.addActionListener((ActionEvent e) -> {
-            GameMaster.instance().btnRollDiceClicked();
-        });
-
-        btnEndTurn.addActionListener((ActionEvent e) -> {
-            GameMaster.instance().btnEndTurnClicked();
-        });
-
-        btnPurchaseProperty.addActionListener((ActionEvent e) -> {
-            GameMaster.instance().btnPurchasePropertyClicked();
-        });
-
-        btnBuyHouse.addActionListener((ActionEvent e) -> {
-            GameMaster.instance().btnBuyHouseClicked();
-        });
-
-        btnGetOutOfJail.addActionListener((ActionEvent e) -> {
-            GameMaster.instance().btnGetOutOfJailClicked();
-        });
-
-        btnDrawCard.addActionListener((ActionEvent e) -> {
-            Card card = GameMaster.instance().btnDrawCardClicked();
-            JOptionPane
-                    .showMessageDialog(PlayerPanel.this, card.getLabel());
-            displayInfo();
-        });
-
-        btnTrade.addActionListener((ActionEvent e) -> {
-            GameMaster.instance().btnTradeClicked();
-        });
+    }
+    
+    public void setBuyHouseActionListener (ActionListener a ){
+        btnBuyHouse.addActionListener(a);
+    }
+    
+    public void setRollDiceActionListener (ActionListener a) {
+        btnRollDice.addActionListener(a);
+    }
+    
+    public void setPurchasePropertyActionListener (ActionListener a) {
+        btnPurchaseProperty.addActionListener(a);
+    }
+    
+    public void setGetOutOfJailActionListener (ActionListener a) {
+        btnGetOutOfJail.addActionListener(a);
+    }
+    
+    public void setEndTurnActionListener (ActionListener a) {
+        btnEndTurn.addActionListener(a);
+    }
+    
+    public void setDrawCardActionListener (ActionListener a) {
+        btnDrawCard.addActionListener(a);
+    }
+    
+    public void setTradeActionListener (ActionListener a) {
+        btnTrade.addActionListener(a);
     }
 
     public void displayInfo() {

@@ -1,5 +1,8 @@
 package edu.ncsu.monopoly;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MockGUI implements MonopolyGUI {
     private boolean btnDrawCardState, btnEndTurnState, btnGetOutOfJailState;
     private final boolean[] btnTradeState = new boolean[2];
@@ -17,10 +20,10 @@ public class MockGUI implements MonopolyGUI {
     }
     
     @Override
-    public int[] getDiceRoll() {
-        int roll[] = new int[2];
-        roll[0] = 2;
-        roll[1] = 3;
+    public List<Integer> getDiceRoll() {
+        List<Integer> roll = new ArrayList<>();
+        roll.add(0, 2);
+        roll.add(1, 3);
         return roll;
     }
 
@@ -46,12 +49,6 @@ public class MockGUI implements MonopolyGUI {
 
     @Override
     public void movePlayer(int index, int from, int to) {
-    }
-
-    @Override
-    public RespondDialog openRespondDialog(TradeDeal deal) {
-        RespondDialog dialog = new MockRespondDialog(deal);
-        return dialog;
     }
 
     @Override
