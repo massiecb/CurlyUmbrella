@@ -12,7 +12,7 @@ public class GameMaster {
     private GameBoard gameBoard;
     private MonopolyGUI gui;
     private int initAmountOfMoney;
-    private final ArrayList players;
+    private final ArrayList<Player> players;
     private int turn = 0;
     private int utilDiceRoll;
     private boolean testMode;
@@ -57,11 +57,11 @@ public class GameMaster {
         if (getCurrentPlayer().isBankrupt()) {
             gui.setBuyHouseEnabled(false);
             gui.setDrawCardEnabled(false);
-            gui.setEndTurnEnabled(false);
             gui.setGetOutOfJailEnabled(false);
             gui.setPurchasePropertyEnabled(false);
             gui.setRollDiceEnabled(false);
-            gui.setTradeEnabled(getCurrentPlayerIndex(), false);
+            gui.setTradeEnabled(getCurrentPlayerIndex(),false);
+            getCurrentPlayer().releaseProperties();
             updateGUI();
         } else {
             switchTurn();
@@ -299,7 +299,13 @@ public class GameMaster {
 
     public void switchTurn() {
         turn = (turn + 1) % getNumberOfPlayers();
-        if (!getCurrentPlayer().isInJail()) {
+
+        if (getCurrentPlayer().isBankrupt()) {
+            getCurrentPlayer().releaseProperties();
+        updateGUI();
+        turn = (turn + 1) % getNumberOfPlayers();
+        }
+       if(!getCurrentPlayer().isInJail()) {
             gui.enablePlayerTurn(turn);
             gui.setBuyHouseEnabled(getCurrentPlayer().canBuyHouse());
             gui.setTradeEnabled(turn, true);

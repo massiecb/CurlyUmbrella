@@ -59,6 +59,36 @@ public class Player {
         }
     return false;	
     }
+    
+    public void releaseProperties() {
+        if (properties.size() > 0) {
+            for (int i = 0; i <= properties.size(); i++) {
+                PropertyCell cell = getProperty(i);
+                properties.remove(i);
+                cell.setAvailable(true);
+                cell.setPlayer(null);
+                cell.setNumHouses(0);
+            }
+        }
+        
+        if (utilities.size() > 0) {
+            for (int i = 0; i <= utilities.size(); i++) {
+                UtilityCell cell = (UtilityCell) utilities.get(i);
+                utilities.remove(i);
+                cell.setAvailable(true);
+                cell.setPlayer(null);
+            }  
+        }
+        
+         if (railroads.size() > 0) {
+            for (int i = 0; i <= railroads.size(); i++) {
+                RailRoadCell cell = (RailRoadCell) railroads.get(i);
+                railroads.remove(i);
+                cell.setAvailable(true);
+                cell.setPlayer(null);
+            }  
+        }
+    }
 	
     public void exchangeProperty(Player player) {
         for(int i = 0; i < getPropertyNumber(); i++ ) {
